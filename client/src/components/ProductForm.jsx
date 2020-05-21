@@ -5,20 +5,21 @@ export default() => {
     const [price, setPrice] = useState(0);
     const [desc, setDesc] = useState("");
 
-    const onSubmitHandler = e => {
+    const handleClick = e => {
         e.preventDefault();
         axios.post('http://localhost:8000/api/products', {
             title,
             price,
             desc
         })
-            .then(res=>console.log(res))
-            .catch(err=>console.log(err))
+            .then(res => {console.log(res)})
+            .catch(err => {console.log(err)})
     };
 
     return (
         <div>
-            <form onSubmit={onSubmitHandler}>
+            <h1>Product Manager</h1>
+            <form>
                 <div className="form-group">
                     <label for="prodTitle">Title</label>
                     <input type="text" onChange={(e)=>setTitle(e.target.value)} className="form-control" id="prodTitle"/>
@@ -32,7 +33,7 @@ export default() => {
                     <input type="text" onChange={(e)=>setDesc(e.target.value)} className="form-control" id="prodDesc"/>
                 </div>
                 <div>
-                    <input type="submit" className="btn btn-primary" value="Create"/>
+                    <input onClick={handleClick} type="submit" className="btn btn-primary" value="Create"/>
                 </div>
             </form>
         </div>

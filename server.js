@@ -6,7 +6,7 @@ const db = "productDB"
 
 app.use(cors())
 app.use(express.json());
-require('./server/routes/product.routes')(app);
 require("./server/config/database.config")(db);
+require('./server/routes/product.routes')(app);
 
 app.listen(port, () => console.log(`Listening on ya port ${port}`) );
